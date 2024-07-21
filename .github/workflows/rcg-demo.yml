@@ -39,9 +39,9 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t my-dockerhub-username/rcl-demo:latest -t my-dockerhub-username/rcl-demo:${{ steps.vars.outputs.sha }} .
+        docker build -t angelgarciaillmatix/rcl-demo:latest -t angelgarciaillmatix/rcl-demo:${{ steps.vars.outputs.sha }} .
 
     - name: Push Docker image to Docker Hub
       run: |
-        docker push my-dockerhub-username/rcl-demo:latest
-        docker push my-dockerhub-username/rcl-demo:${{ steps.vars.outputs.sha }}
+        docker push angelgarciaillmatix/rcl-demo:latest
+        docker push angelgarciaillmatix/rcl-demo:${{ steps.vars.outputs.sha }}
