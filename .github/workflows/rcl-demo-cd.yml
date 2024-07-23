@@ -39,20 +39,20 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t angelgarciaillmatix/rcl-demo-v2:latest -t angelgarciaillmatix/rcl-demo-v2:${{ steps.vars.outputs.sha }} .
+        sudo docker build -t angelgarciaillmatix/rcl-demo-v2:latest -t angelgarciaillmatix/rcl-demo-v2:${{ steps.vars.outputs.sha }} .
 
     - name: Push Docker image to Docker Hub
       run: |
-        docker push angelgarciaillmatix/rcl-demo-v2:latest
-        docker push angelgarciaillmatix/rcl-demo-v2:${{ steps.vars.outputs.sha }}
+        sudo docker push angelgarciaillmatix/rcl-demo-v2:latest
+        sudo docker push angelgarciaillmatix/rcl-demo-v2:${{ steps.vars.outputs.sha }}
 
     - name: Pull latest Docker image
-      run: docker pull angelgarciaillmatix/rcl-demo-v2:latest
+      run: sudo docker pull angelgarciaillmatix/rcl-demo-v2:latest
 
     - name: Run or update Docker container
       run: |
         if [ "$(docker ps -q -f name=rcl-demo-v2)" ]; then
-          docker stop rcl-demo-v2
-          docker rm rcl-demo-v2
+          sudo docker stop rcl-demo-v2
+          sudo docker rm rcl-demo-v2
         fi
-        docker run -d --name rcl-demo-v2 -p 8080:8080 angelgarciaillmatix/rcl-demo-v2:latest
+        sudo docker run -d --name rcl-demo-v2 -p 8080:8080 angelgarciaillmatix/rcl-demo-v2:latest
